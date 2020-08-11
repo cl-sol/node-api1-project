@@ -16,7 +16,7 @@ server.listen(3000, () => {
 server.get("/api/users", (req, res) => {
     const users = db.getUsers()
     if (users) {
-        res.json()
+        res.json(users)
     } else {
         res.status(500).json({
             errorMessage: "The users information could not be retrieved."
@@ -64,7 +64,7 @@ server.post("/api/users", (req, res) => {
 });
 
 //CRUD - delete
-server.delete("api/users/:id", (req, res) => {
+server.delete("/api/users/:id", (req, res) => {
     const user = db.getUserById(req.params.id)
 
     if (user) {
